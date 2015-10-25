@@ -20,15 +20,15 @@ public class SpellDamageEvent extends CombatEvent implements Spell, Damage {
     public final int              amount;
     public final int              overkill;
     public final SpellSchool      spellSchool;
-    public final boolean          resisted;
-    public final boolean          blocked;
-    public final boolean          absorbed;
+    public final int              resisted;
+    public final int              blocked;
+    public final int              absorbed;
     public final boolean          critical;
     public final boolean          glancing;
     public final boolean          crushing;
 
     public SpellDamageEvent(Unit source, Unit destination, SpellInformation spell, int amount, int overkill,
-            SpellSchool spellSchool, boolean resisted, boolean blocked, boolean absorbed, boolean critical,
+            SpellSchool spellSchool, int resisted, int blocked, int absorbed, boolean critical,
             boolean glancing, boolean crushing) {
         super(source, destination);
         this.spell = spell;

@@ -10,7 +10,7 @@ import fr.lby.events.Event;
 public abstract class AbstractHandler {
 
     protected AbstractHandler nextParser;
-    protected EventType           eventType;
+    protected EventType       eventType;
 
     public AbstractHandler nextParser(AbstractHandler nextParser) {
         this.nextParser = nextParser;
@@ -33,5 +33,9 @@ public abstract class AbstractHandler {
     protected abstract EventType getEventType();
 
     protected abstract Event parse(String[] strings);
+
+    int parseInteger(String[] strings, int index) {
+        return Integer.valueOf(strings[index]);
+    }
 
 }

@@ -18,10 +18,10 @@ public class EncounterStartEventParser extends AbstractHandler {
     @Override
     protected EncounterStartEvent parse(String[] strings) {
         return new EncounterStartEvent(
-                Integer.valueOf(strings[EncounterStartEventMapping.ID]),
+                parseInteger(strings, EncounterStartEventMapping.ID),
                 strings[EncounterStartEventMapping.NAME],
                 DifficultyType.valueOf(Integer.valueOf(strings[EncounterStartEventMapping.DIFFICULTY_TYPE])),
-                Integer.valueOf(strings[EncounterStartEventMapping.RAID_SIZE]));
+                parseInteger(strings, EncounterStartEventMapping.RAID_SIZE));
 
     }
 

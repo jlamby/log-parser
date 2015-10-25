@@ -10,7 +10,7 @@ public abstract class AbstractSpellEventHandler extends AbstractCombatEventHandl
 
     SpellInformation parseSpell(String[] strings) {
         return new SpellInformation(
-                Integer.valueOf(strings[SpellEventMapping.ID]),
+                parseInteger(strings, SpellEventMapping.ID),
                 strings[SpellEventMapping.NAME],
                 null);
     }

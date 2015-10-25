@@ -16,11 +16,11 @@ public interface Damage {
 
     public SpellSchool getSpellSchool();
 
-    public boolean isResisted();
+    public int getResisted();
 
-    public boolean isBlocked();
+    public int getBlocked();
 
-    public boolean isAbsorbed();
+    public int getAbsorbed();
 
     public boolean isCritical();
 

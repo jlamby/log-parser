@@ -11,7 +11,7 @@ import fr.lby.events.encounter.EncounterStartEvent;
 public class EncounterEndEventParser extends EncounterStartEventParser {
 
     @Override
-    protected EncounterStartEvent parse(String[] strings) {
+    protected EncounterEndEvent parse(String[] strings) {
         EncounterStartEvent event = super.parse(strings);
 
         return new EncounterEndEvent(
