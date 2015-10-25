@@ -21,6 +21,7 @@ public enum EventType {
     SPELL_CAST_SUCCESS,
     SPELL_PERIODIC_HEAL,
     SPELL_PERIODIC_DAMAGE,
+    SWING_DAMAGE,
     SWING_DAMAGE_LANDED;
 
     public static EventType getByName(String name) {
