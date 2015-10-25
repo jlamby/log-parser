@@ -14,7 +14,7 @@ public abstract class AbstractSpellAuraEventHandler extends AbstractSpellEventHa
 
     int parseAmount(String[] strings) {
         if (strings.length > AbstractSpellAuraEventMapping.AMOUNT) {
-            return Integer.valueOf(strings[AbstractSpellAuraEventMapping.AMOUNT]);
+            return parseInteger(strings, AbstractSpellAuraEventMapping.AMOUNT);
         }
 
         return 0;

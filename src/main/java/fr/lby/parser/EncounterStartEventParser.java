@@ -20,7 +20,7 @@ public class EncounterStartEventParser extends AbstractHandler {
         return new EncounterStartEvent(
                 parseInteger(strings, EncounterStartEventMapping.ID),
                 strings[EncounterStartEventMapping.NAME],
-                DifficultyType.valueOf(Integer.valueOf(strings[EncounterStartEventMapping.DIFFICULTY_TYPE])),
+                DifficultyType.valueOf(parseInteger(strings, EncounterStartEventMapping.DIFFICULTY_TYPE)),
                 parseInteger(strings, EncounterStartEventMapping.RAID_SIZE));
 
     }

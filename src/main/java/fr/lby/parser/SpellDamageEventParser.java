@@ -1,7 +1,5 @@
 package fr.lby.parser;
 
-import org.apache.commons.lang3.BooleanUtils;
-
 import fr.lby.enums.EventType;
 import fr.lby.events.spell.SpellDamageEvent;
 import fr.lby.model.SpellInformation;
@@ -31,9 +29,9 @@ public class SpellDamageEventParser extends AbstractSpellEventHandler {
                 parseInteger(strings, SpellDamageEventMapping.RESISTED),
                 parseInteger(strings, SpellDamageEventMapping.BLOCKED),
                 parseInteger(strings, SpellDamageEventMapping.ABSORBED),
-                BooleanUtils.toBoolean(strings[SpellDamageEventMapping.CRITICAL], "1", "nil"),
-                BooleanUtils.toBoolean(strings[SpellDamageEventMapping.GLANCING], "1", "nil"),
-                BooleanUtils.toBoolean(strings[SpellDamageEventMapping.CRUSHING], "1", "nil"));
+                parseBoolean(strings, SpellDamageEventMapping.CRITICAL),
+                parseBoolean(strings, SpellDamageEventMapping.GLANCING),
+                parseBoolean(strings, SpellDamageEventMapping.CRUSHING));
     }
 
     protected static class SpellDamageEventMapping {

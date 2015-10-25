@@ -1,5 +1,7 @@
 package fr.lby.parser;
 
+import org.apache.commons.lang3.BooleanUtils;
+
 import fr.lby.enums.EventType;
 import fr.lby.events.Event;
 
@@ -36,6 +38,10 @@ public abstract class AbstractHandler {
 
     int parseInteger(String[] strings, int index) {
         return Integer.valueOf(strings[index]);
+    }
+
+    boolean parseBoolean(String[] strings, int index) {
+        return BooleanUtils.toBoolean(strings[index], "1", "nil");
     }
 
 }
