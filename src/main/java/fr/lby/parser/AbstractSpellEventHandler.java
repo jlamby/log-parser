@@ -1,6 +1,6 @@
 package fr.lby.parser;
 
-import fr.lby.model.Spell;
+import fr.lby.model.SpellInformation;
 
 /**
  * @author jlamby
@@ -8,8 +8,8 @@ import fr.lby.model.Spell;
  */
 public abstract class AbstractSpellEventHandler extends AbstractCombatEventHandler {
 
-    Spell parseSpell(String[] strings) {
-        return new Spell(
+    SpellInformation parseSpell(String[] strings) {
+        return new SpellInformation(
                 Integer.valueOf(strings[SpellEventMapping.ID]),
                 strings[SpellEventMapping.NAME],
                 null);

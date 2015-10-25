@@ -4,7 +4,7 @@ import org.apache.commons.lang3.BooleanUtils;
 
 import fr.lby.enums.EventType;
 import fr.lby.events.spell.SpellDamageEvent;
-import fr.lby.model.Spell;
+import fr.lby.model.SpellInformation;
 
 /**
  * @author jlamby
@@ -19,7 +19,7 @@ public class SpellDamageEventParser extends AbstractSpellEventHandler {
 
     @Override
     protected SpellDamageEvent parse(String[] strings) {
-        Spell spell = parseSpell(strings);
+        SpellInformation spell = parseSpell(strings);
 
         return new SpellDamageEvent(
                 parseSourceUnit(strings),

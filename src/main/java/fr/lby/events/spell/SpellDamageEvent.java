@@ -2,28 +2,32 @@ package fr.lby.events.spell;
 
 import fr.lby.enums.EventType;
 import fr.lby.events.CombatEvent;
-import fr.lby.model.Spell;
+import fr.lby.events.type.primary.Spell;
+import fr.lby.events.type.secondary.Damage;
+import fr.lby.model.SpellInformation;
 import fr.lby.model.SpellSchool;
 import fr.lby.model.Unit;
+import lombok.Getter;
 
 /**
  * @author jlamby
  *
  */
-public class SpellDamageEvent extends CombatEvent {
+@Getter
+public class SpellDamageEvent extends CombatEvent implements Spell, Damage {
 
-    public final Spell       spell;
-    public final int         amount;
-    public final int         overkill;
-    public final SpellSchool spellSchool;
-    public final boolean     resisted;
-    public final boolean     blocked;
-    public final boolean     absorbed;
-    public final boolean     critical;
-    public final boolean     glancing;
-    public final boolean     crushing;
+    public final SpellInformation spell;
+    public final int              amount;
+    public final int              overkill;
+    public final SpellSchool      spellSchool;
+    public final boolean          resisted;
+    public final boolean          blocked;
+    public final boolean          absorbed;
+    public final boolean          critical;
+    public final boolean          glancing;
+    public final boolean          crushing;
 
-    public SpellDamageEvent(Unit source, Unit destination, Spell spell, int amount, int overkill,
+    public SpellDamageEvent(Unit source, Unit destination, SpellInformation spell, int amount, int overkill,
             SpellSchool spellSchool, boolean resisted, boolean blocked, boolean absorbed, boolean critical,
             boolean glancing, boolean crushing) {
         super(source, destination);

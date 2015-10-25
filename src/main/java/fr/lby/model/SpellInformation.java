@@ -4,13 +4,13 @@ package fr.lby.model;
  * @author jlamby
  *
  */
-public class Spell {
+public class SpellInformation {
 
     public final int         id;
     public final String      name;
     public final SpellSchool spellSchool;
 
-    public Spell(int id, String name, SpellSchool spellSchool) {
+    public SpellInformation(int id, String name, SpellSchool spellSchool) {
         this.id = id;
         this.name = name;
         this.spellSchool = spellSchool;
