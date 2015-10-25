@@ -16,7 +16,8 @@ public enum EventType {
     ENCOUNTER_END,
     UNIT_DIED,
     SPELL_DAMAGE,
-    SPELL_PERIODIC_HEAL;
+    SPELL_PERIODIC_HEAL,
+    SPELL_PERIODIC_DAMAGE;
 
     public static EventType getByName(String name) {
         return Arrays
