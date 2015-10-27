@@ -26,9 +26,9 @@ public class SpellPeriodicHealEventParser extends AbstractSpellEventHandler {
                 parseSourceUnit(strings),
                 parseDestinationUnit(strings),
                 spell,
-                Integer.valueOf(strings[SpellPeriodicHealEventMapping.AMOUNT]),
-                Integer.valueOf(strings[SpellPeriodicHealEventMapping.OVERHEAL]),
-                BooleanUtils.toBoolean(strings[SpellPeriodicHealEventMapping.ABSORBED], "1", "0"),
+                parseInteger(strings, SpellPeriodicHealEventMapping.AMOUNT),
+                parseInteger(strings, SpellPeriodicHealEventMapping.OVERHEAL),
+                parseInteger(strings, SpellPeriodicHealEventMapping.ABSORBED),
                 BooleanUtils.toBoolean(strings[SpellPeriodicHealEventMapping.CRITICAL], "1", "nil"));
     }
 

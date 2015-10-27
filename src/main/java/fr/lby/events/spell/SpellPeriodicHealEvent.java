@@ -18,11 +18,11 @@ public class SpellPeriodicHealEvent extends CombatEvent implements SpellPeriodic
     public final SpellInformation spell;
     public final int              amount;
     public final int              overheal;
-    public final boolean          absorbed;
+    public final int              absorbed;
     public final boolean          critical;
 
     public SpellPeriodicHealEvent(Unit source, Unit destination, SpellInformation spell, int amount, int overheal,
-            boolean absorbed, boolean critical) {
+            int absorbed, boolean critical) {
         super(source, destination);
         this.spell = spell;
         this.amount = amount;
@@ -39,8 +39,7 @@ public class SpellPeriodicHealEvent extends CombatEvent implements SpellPeriodic
     @Override
     public String toString() {
         return "SpellPeriodicHealEvent [ " + source.name + " (" + spell.name + ") -> " + destination.name + " : "
-                + amount
-                + "]";
+                + amount + "]";
     }
 
 }
