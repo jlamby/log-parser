@@ -15,6 +15,7 @@ public enum EventType {
     ENCOUNTER_START,
     ENCOUNTER_END,
     UNIT_DIED,
+    PARTY_KILL,
     RANGE_DAMAGE,
     // SPELL_ABSORBED,
     SPELL_AURA_APPLIED,
