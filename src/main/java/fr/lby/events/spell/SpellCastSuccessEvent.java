@@ -12,12 +12,12 @@ import lombok.Getter;
  * @author jlamby
  *
  */
-public class SpellCastSuccess extends CombatEvent implements Spell, CastSuccess {
+public class SpellCastSuccessEvent extends CombatEvent implements Spell, CastSuccess {
 
     @Getter
     public final SpellInformation spell;
 
-    public SpellCastSuccess(Unit source, Unit destination, SpellInformation spell) {
+    public SpellCastSuccessEvent(Unit source, Unit destination, SpellInformation spell) {
         super(source, destination);
         this.spell = spell;
     }
