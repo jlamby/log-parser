@@ -3,7 +3,6 @@ package fr.lby.parser;
 import fr.lby.enums.EventType;
 import fr.lby.enums.MissType;
 import fr.lby.events.spell.SpellPeriodicMissedEvent;
-import fr.lby.model.SpellInformation;
 
 /**
  * @author jlamby
@@ -26,12 +25,10 @@ public class SpellPeriodicMissedEventParser extends AbstractSpellEventHandler {
 
     @Override
     protected SpellPeriodicMissedEvent parse(String[] strings) {
-        SpellInformation spell = parseSpell(strings);
-
         return new SpellPeriodicMissedEvent(
                 parseSourceUnit(strings),
                 parseDestinationUnit(strings),
-                spell,
+                parseSpell(strings),
                 MissType.valueOf(strings[SpellPeriodicMissedEventMapping.MISS_TYPE]),
                 parseBoolean(strings, SpellPeriodicMissedEventMapping.OFF_HAND),
                 parseBoolean(strings, SpellPeriodicMissedEventMapping.MULTISTRIKE),

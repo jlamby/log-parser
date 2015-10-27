@@ -5,7 +5,6 @@ import org.apache.commons.lang3.BooleanUtils;
 import fr.lby.enums.EventType;
 import fr.lby.events.Event;
 import fr.lby.events.spell.SpellPeriodicHealEvent;
-import fr.lby.model.SpellInformation;
 
 /**
  * @author jlamby
@@ -20,12 +19,11 @@ public class SpellPeriodicHealEventParser extends AbstractSpellEventHandler {
 
     @Override
     protected Event parse(String[] strings) {
-        SpellInformation spell = parseSpell(strings);
 
         return new SpellPeriodicHealEvent(
                 parseSourceUnit(strings),
                 parseDestinationUnit(strings),
-                spell,
+                parseSpell(strings),
                 parseInteger(strings, SpellPeriodicHealEventMapping.AMOUNT),
                 parseInteger(strings, SpellPeriodicHealEventMapping.OVERHEAL),
                 parseInteger(strings, SpellPeriodicHealEventMapping.ABSORBED),

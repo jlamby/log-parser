@@ -2,7 +2,6 @@ package fr.lby.parser;
 
 import fr.lby.enums.EventType;
 import fr.lby.events.spell.SpellDamageEvent;
-import fr.lby.model.SpellInformation;
 
 /**
  * @author jlamby
@@ -17,12 +16,10 @@ public class SpellDamageEventParser extends AbstractSpellEventHandler {
 
     @Override
     protected SpellDamageEvent parse(String[] strings) {
-        SpellInformation spell = parseSpell(strings);
-
         return new SpellDamageEvent(
                 parseSourceUnit(strings),
                 parseDestinationUnit(strings),
-                spell,
+                parseSpell(strings),
                 parseInteger(strings, SpellDamageEventMapping.AMOUNT),
                 parseInteger(strings, SpellDamageEventMapping.OVERKILL),
                 null, // Integer.valueOf(strings[SpellDamageEventMapping.SPELL_SCHOOL]),
