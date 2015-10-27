@@ -30,7 +30,8 @@ public enum EventType {
     SPELL_PERIODIC_HEAL,
     SPELL_PERIODIC_MISSED,
     SWING_DAMAGE,
-    SWING_DAMAGE_LANDED;
+    SWING_DAMAGE_LANDED,
+    SWING_MISSED;
 
     public static EventType getByName(String name) {
         return Arrays
