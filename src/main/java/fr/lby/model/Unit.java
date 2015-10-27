@@ -1,9 +1,12 @@
 package fr.lby.model;
 
+import lombok.EqualsAndHashCode;
+
 /**
  * @author jlamby
  *
  */
+@EqualsAndHashCode(of = "guid")
 public class Unit {
 
     public final String guid;
