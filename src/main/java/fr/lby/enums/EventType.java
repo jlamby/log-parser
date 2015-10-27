@@ -27,18 +27,19 @@ public enum EventType {
     SPELL_ENERGIZE,
     SPELL_PERIODIC_DAMAGE,
     SPELL_PERIODIC_HEAL,
+    SPELL_PERIODIC_MISSED,
     SWING_DAMAGE,
     SWING_DAMAGE_LANDED;
 
     public static EventType getByName(String name) {
         return Arrays
-                .stream(values())
-                .filter(type -> type.name().equals(name))
-                .findFirst()
-                .orElseGet(() -> {
-                    LOGGER.debug("Event type with name {} is UNKNOWN", name);
-                    return UNKNOWN;
-                });
+            .stream(values())
+            .filter(type -> type.name().equals(name))
+            .findFirst()
+            .orElseGet(() -> {
+                LOGGER.debug("Event type with name {} is UNKNOWN", name);
+                return UNKNOWN;
+            });
     }
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EventType.class);
