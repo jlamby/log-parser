@@ -2,7 +2,6 @@ package fr.lby.parser;
 
 import fr.lby.enums.EventType;
 import fr.lby.events.spell.SpellAuraAppliedEvent;
-import fr.lby.model.SpellInformation;
 
 /**
  * @author jlamby
@@ -17,12 +16,10 @@ public class SpellAuraAppliedEventParser extends AbstractSpellAuraEventHandler {
 
     @Override
     protected SpellAuraAppliedEvent parse(String[] strings) {
-        SpellInformation spell = parseSpell(strings);
-
         return new SpellAuraAppliedEvent(
                 parseSourceUnit(strings),
                 parseDestinationUnit(strings),
-                spell,
+                parseSpell(strings),
                 parseAuraType(strings));
     }
 
