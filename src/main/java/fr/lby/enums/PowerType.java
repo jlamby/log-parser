@@ -27,6 +27,7 @@ public enum PowerType {
     SOUND_ATRAMEDES(10),
     UNANMED(11),
     CHI(12),
+    SHADOW_ORB(13),
     BURNING_EMBERS(14);
 
     private PowerType(int value) {
