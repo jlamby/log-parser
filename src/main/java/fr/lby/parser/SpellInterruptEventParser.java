@@ -2,13 +2,12 @@ package fr.lby.parser;
 
 import fr.lby.enums.EventType;
 import fr.lby.events.spell.SpellInterruptEvent;
-import fr.lby.model.SpellInformation;
 
 /**
  * @author jlamby
  *
  */
-public class SpellInterruptEventParser extends AbstractSpellEventHandler {
+public class SpellInterruptEventParser extends AbstractExtraSpellEventHandler {
 
     @Override
     protected EventType getEventType() {
@@ -21,20 +20,7 @@ public class SpellInterruptEventParser extends AbstractSpellEventHandler {
                 parseSourceUnit(strings),
                 parseDestinationUnit(strings),
                 parseSpell(strings),
-                parseInterruptedSpell(strings));
-    }
-
-    SpellInformation parseInterruptedSpell(String[] strings) {
-        return new SpellInformation(
-                parseInteger(strings, SpellInterruptMapping.ID),
-                strings[SpellInterruptMapping.NAME],
-                null);
-    }
-
-    protected static class SpellInterruptMapping {
-        static final int ID     = 12;
-        static final int NAME   = 13;
-        static final int SCHOOL = 14;
+                parseExtraSpell(strings));
     }
 
 }
