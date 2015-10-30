@@ -19,9 +19,9 @@ public abstract class AbstractHandler {
         return nextParser;
     }
 
-    public Event parse(String type, String[] strings) {
+    public Event parse(EventType type, String[] strings) {
 
-        if (EventType.getByName(type) == getEventType()) {
+        if (type == getEventType()) {
             return parse(strings);
         }
 
