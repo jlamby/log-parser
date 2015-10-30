@@ -14,6 +14,7 @@ public enum EventType {
     UNKNOWN,
     ENCOUNTER_START,
     ENCOUNTER_END,
+    UNIT_DESTROYED,
     UNIT_DIED,
     PARTY_KILL,
     RANGE_DAMAGE,

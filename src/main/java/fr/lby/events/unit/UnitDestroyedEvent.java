@@ -7,21 +7,20 @@ import fr.lby.model.Unit;
  * @author jlamby
  *
  */
-public class UnitDiedEvent extends UnitEvent {
+public class UnitDestroyedEvent extends UnitEvent {
 
-    public UnitDiedEvent(String unknownField1, String unknownField2, String unknownField3, String unknownField4,
+    public UnitDestroyedEvent(String unknownField1, String unknownField2, String unknownField3, String unknownField4,
             Unit source) {
         super(unknownField1, unknownField2, unknownField3, unknownField4, source);
     }
 
     @Override
     public EventType getType() {
-        return EventType.UNIT_DIED;
+        return EventType.UNIT_DESTROYED;
     }
 
     @Override
     public String toString() {
-        return "UnitDiedEvent [source=" + source + "]";
+        return "UnitDestroyedEvent [source=" + source.name + "]";
     }
-
 }
