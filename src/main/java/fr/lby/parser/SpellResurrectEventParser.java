@@ -1,22 +1,22 @@
 package fr.lby.parser;
 
 import fr.lby.enums.EventType;
-import fr.lby.events.spell.SpellCastSuccessEvent;
+import fr.lby.events.spell.SpellResurrectEvent;
 
 /**
  * @author jlamby
  *
  */
-public class SpellCastSuccessEventParser extends AbstractSpellEventHandler {
+public class SpellResurrectEventParser extends AbstractSpellEventHandler {
 
     @Override
     protected EventType getEventType() {
-        return EventType.SPELL_CAST_SUCCESS;
+        return EventType.SPELL_RESURRECT;
     }
 
     @Override
-    protected SpellCastSuccessEvent parse(String[] strings) {
-        return new SpellCastSuccessEvent(
+    protected SpellResurrectEvent parse(String[] strings) {
+        return new SpellResurrectEvent(
                 parseSourceUnit(strings),
                 parseDestinationUnit(strings),
                 parseSpell(strings));
