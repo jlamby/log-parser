@@ -3,6 +3,7 @@ package fr.lby.events.spell;
 import fr.lby.enums.EventType;
 import fr.lby.events.CombatEvent;
 import fr.lby.events.type.primary.Spell;
+import fr.lby.events.type.secondary.CastFailed;
 import fr.lby.model.SpellInformation;
 import fr.lby.model.Unit;
 import lombok.Getter;

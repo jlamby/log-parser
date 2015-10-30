@@ -1,4 +1,4 @@
-package fr.lby.events.spell;
+package fr.lby.events.type.secondary;
 
 /**
  * If the cast fails before it starts (IE invalid target), then _CAST_START never triggers. <br/>
