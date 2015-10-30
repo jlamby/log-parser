@@ -18,7 +18,7 @@ public enum EventType {
     UNIT_DIED,
     PARTY_KILL,
     RANGE_DAMAGE,
-    // SPELL_ABSORBED,
+    SPELL_ABSORBED,
     SPELL_AURA_APPLIED,
     SPELL_AURA_APPLIED_DOSE,
     SPELL_AURA_BROKEN_SPELL,
@@ -51,7 +51,7 @@ public enum EventType {
             .filter(type -> type.name().equals(name))
             .findFirst()
             .orElseGet(() -> {
-                LOGGER.debug("Event type with name {} is UNKNOWN", name);
+                LOGGER.warn("Event type with name {} is UNKNOWN", name);
                 return UNKNOWN;
             });
     }
