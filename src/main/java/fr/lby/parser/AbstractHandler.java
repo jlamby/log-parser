@@ -3,7 +3,7 @@ package fr.lby.parser;
 import org.apache.commons.lang3.BooleanUtils;
 
 import fr.lby.enums.EventType;
-import fr.lby.events.Event;
+import fr.lby.events.type.Event;
 
 /**
  * @author jlamby

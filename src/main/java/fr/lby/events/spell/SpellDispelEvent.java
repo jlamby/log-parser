@@ -16,9 +16,9 @@ import lombok.Getter;
 @Getter
 public class SpellDispelEvent extends CombatEvent implements Spell, Dispel {
 
-    private SpellInformation spell;
-    private SpellInformation extraSpell;
-    private AuraType         auraType;
+    private final SpellInformation spell;
+    private final SpellInformation extraSpell;
+    private final AuraType         auraType;
 
     public SpellDispelEvent(Unit source, Unit destination, SpellInformation spell,
             SpellInformation interruptedSpell, AuraType auraType) {

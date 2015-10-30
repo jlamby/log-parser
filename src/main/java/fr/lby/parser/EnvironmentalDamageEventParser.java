@@ -2,7 +2,7 @@ package fr.lby.parser;
 
 import fr.lby.enums.EnvironmentalType;
 import fr.lby.enums.EventType;
-import fr.lby.events.EnvironmentalDamage;
+import fr.lby.events.EnvironmentalDamageEvent;
 
 /**
  * @author jlamby
@@ -16,8 +16,8 @@ public class EnvironmentalDamageEventParser extends AbstractCombatEventHandler {
     }
 
     @Override
-    protected EnvironmentalDamage parse(String[] strings) {
-        return new EnvironmentalDamage(
+    protected EnvironmentalDamageEvent parse(String[] strings) {
+        return new EnvironmentalDamageEvent(
                 parseSourceUnit(strings),
                 parseDestinationUnit(strings),
                 EnvironmentalType.getByValue(strings[EnvironmentalDamageEventMapping.ENVIRONMENTAL_TYPE]),

@@ -1,4 +1,4 @@
-package fr.lby.events;
+package fr.lby.events.type;
 
 import fr.lby.enums.EventType;
 

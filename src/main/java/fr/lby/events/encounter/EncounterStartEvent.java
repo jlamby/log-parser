@@ -2,7 +2,7 @@ package fr.lby.events.encounter;
 
 import fr.lby.enums.DifficultyType;
 import fr.lby.enums.EventType;
-import fr.lby.events.Event;
+import fr.lby.events.type.Event;
 
 /**
  * @author jlamby

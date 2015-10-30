@@ -1,6 +1,6 @@
 package fr.lby.events.unit;
 
-import fr.lby.events.Event;
+import fr.lby.events.type.Event;
 import fr.lby.model.Unit;
 
 /**

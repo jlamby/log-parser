@@ -15,8 +15,8 @@ import lombok.Getter;
 @Getter
 public class SpellInterruptEvent extends CombatEvent implements Spell, Interrupt {
 
-    private SpellInformation spell;
-    private SpellInformation extraSpell;
+    private final SpellInformation spell;
+    private final SpellInformation extraSpell;
 
     public SpellInterruptEvent(Unit source, Unit destination, SpellInformation spell,
             SpellInformation interruptedSpell) {

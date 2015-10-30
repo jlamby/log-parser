@@ -13,7 +13,7 @@ import lombok.Getter;
  *
  */
 @Getter
-public class EnvironmentalDamage extends CombatEvent implements Environmental, Damage {
+public class EnvironmentalDamageEvent extends CombatEvent implements Environmental, Damage {
 
     public final EnvironmentalType environmentalType;
     public final int               amount;
@@ -26,7 +26,7 @@ public class EnvironmentalDamage extends CombatEvent implements Environmental, D
     public final boolean           glancing;
     public final boolean           crushing;
 
-    public EnvironmentalDamage(Unit source, Unit destination, EnvironmentalType environmentalType, int amount,
+    public EnvironmentalDamageEvent(Unit source, Unit destination, EnvironmentalType environmentalType, int amount,
             int overkill, SpellSchool spellSchool, int resisted, int blocked, int absorbed, boolean critical,
             boolean glancing, boolean crushing) {
         super(source, destination);
