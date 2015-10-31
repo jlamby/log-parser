@@ -23,15 +23,7 @@ public class SpellPeriodicDamageEventParser extends SpellDamageEventParser {
                 event.source,
                 event.destination,
                 event.spell,
-                event.amount,
-                event.overkill,
-                event.spellSchool,
-                event.resisted,
-                event.blocked,
-                event.absorbed,
-                event.critical,
-                event.glancing,
-                event.crushing);
+                event.damage);
     }
 
 }

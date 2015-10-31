@@ -4,7 +4,7 @@ import fr.lby.enums.EnvironmentalType;
 import fr.lby.enums.EventType;
 import fr.lby.events.type.primary.Environmental;
 import fr.lby.events.type.secondary.Damage;
-import fr.lby.model.SpellSchool;
+import fr.lby.model.DamageInformation;
 import fr.lby.model.Unit;
 import lombok.Getter;
 
@@ -16,30 +16,13 @@ import lombok.Getter;
 public class EnvironmentalDamageEvent extends CombatEvent implements Environmental, Damage {
 
     public final EnvironmentalType environmentalType;
-    public final int               amount;
-    public final int               overkill;
-    public final SpellSchool       spellSchool;
-    public final int               resisted;
-    public final int               blocked;
-    public final int               absorbed;
-    public final boolean           critical;
-    public final boolean           glancing;
-    public final boolean           crushing;
+    public final DamageInformation damage;
 
-    public EnvironmentalDamageEvent(Unit source, Unit destination, EnvironmentalType environmentalType, int amount,
-            int overkill, SpellSchool spellSchool, int resisted, int blocked, int absorbed, boolean critical,
-            boolean glancing, boolean crushing) {
+    public EnvironmentalDamageEvent(Unit source, Unit destination, EnvironmentalType environmentalType,
+            DamageInformation damageInformation) {
         super(source, destination);
         this.environmentalType = environmentalType;
-        this.amount = amount;
-        this.overkill = overkill;
-        this.spellSchool = spellSchool;
-        this.resisted = resisted;
-        this.blocked = blocked;
-        this.absorbed = absorbed;
-        this.critical = critical;
-        this.glancing = glancing;
-        this.crushing = crushing;
+        this.damage = damageInformation;
     }
 
     @Override
@@ -50,6 +33,6 @@ public class EnvironmentalDamageEvent extends CombatEvent implements Environment
     @Override
     public String toString() {
         return "EnvironmentalDamage [ " + environmentalType + " -> " + destination.name + " : "
-                + amount + "]";
+                + damage.amount + "]";
     }
 }

@@ -22,15 +22,7 @@ public class SwingDamageLandedEventParser extends SwingDamageEventParser {
         return new SwingDamageLandedEvent(
                 event.source,
                 event.destination,
-                event.amount,
-                event.overkill,
-                event.spellSchool,
-                event.resisted,
-                event.blocked,
-                event.absorbed,
-                event.critical,
-                event.glancing,
-                event.crushing);
+                event.damage);
     }
 
 }

@@ -2,7 +2,7 @@ package fr.lby.parser;
 
 import fr.lby.enums.EventType;
 import fr.lby.events.range.RangeDamageEvent;
-import fr.lby.model.SpellInformation;
+import fr.lby.parser.models.ParserUtils;
 
 /**
  * @author jlamby
@@ -17,33 +17,13 @@ public class RangeDamageEventParser extends AbstractRangeEventHandler {
 
     @Override
     protected RangeDamageEvent parse(String[] strings) {
-        SpellInformation spell = parseSpell(strings);
-
         return new RangeDamageEvent(
                 parseSourceUnit(strings),
                 parseDestinationUnit(strings),
-                spell,
-                parseInteger(strings, SpellDamageEventMapping.AMOUNT),
-                parseInteger(strings, SpellDamageEventMapping.OVERKILL),
-                null, // Integer.valueOf(strings[SpellDamageEventMapping.SPELL_SCHOOL]),
-                parseInteger(strings, SpellDamageEventMapping.RESISTED),
-                parseInteger(strings, SpellDamageEventMapping.BLOCKED),
-                parseInteger(strings, SpellDamageEventMapping.ABSORBED),
-                parseBoolean(strings, SpellDamageEventMapping.CRITICAL),
-                parseBoolean(strings, SpellDamageEventMapping.GLANCING),
-                parseBoolean(strings, SpellDamageEventMapping.CRUSHING));
+                parseSpell(strings),
+                ParserUtils.parseDamage(strings, DAMAGE_FIELDS_OFFSET));
     }
 
-    protected static class SpellDamageEventMapping {
-        static final int AMOUNT       = 25;
-        static final int OVERKILL     = 26;
-        static final int SPELL_SCHOOL = 27;
-        static final int RESISTED     = 28;
-        static final int BLOCKED      = 29;
-        static final int ABSORBED     = 30;
-        static final int CRITICAL     = 31;
-        static final int GLANCING     = 32;
-        static final int CRUSHING     = 33;
-    }
+    private static final int DAMAGE_FIELDS_OFFSET = 25;
 
 }

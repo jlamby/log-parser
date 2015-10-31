@@ -1,7 +1,7 @@
 package fr.lby.events.swing;
 
 import fr.lby.enums.EventType;
-import fr.lby.model.SpellSchool;
+import fr.lby.model.DamageInformation;
 import fr.lby.model.Unit;
 import lombok.Getter;
 
@@ -12,10 +12,8 @@ import lombok.Getter;
 @Getter
 public class SwingDamageLandedEvent extends SwingDamageEvent {
 
-    public SwingDamageLandedEvent(Unit source, Unit destination, int amount, int overkill, SpellSchool spellSchool,
-            int resisted, int blocked, int absorbed, boolean critical, boolean glancing, boolean crushing) {
-        super(source, destination, amount, overkill, spellSchool, resisted, blocked, absorbed, critical, glancing,
-                crushing);
+    public SwingDamageLandedEvent(Unit source, Unit destination, DamageInformation damage) {
+        super(source, destination, damage);
     }
 
     @Override
@@ -25,7 +23,6 @@ public class SwingDamageLandedEvent extends SwingDamageEvent {
 
     @Override
     public String toString() {
-        return "SwingDamageLandedEvent [ " + source.name + " -> " + destination.name + " : "
-                + amount + "]";
+        return "SwingDamageLandedEvent [ " + source.name + " -> " + destination.name + " : " + damage.amount + "]";
     }
 }

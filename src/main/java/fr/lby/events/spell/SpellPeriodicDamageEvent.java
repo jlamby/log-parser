@@ -2,8 +2,8 @@ package fr.lby.events.spell;
 
 import fr.lby.enums.EventType;
 import fr.lby.events.type.primary.SpellPeriodic;
+import fr.lby.model.DamageInformation;
 import fr.lby.model.SpellInformation;
-import fr.lby.model.SpellSchool;
 import fr.lby.model.Unit;
 
 /**
@@ -12,11 +12,8 @@ import fr.lby.model.Unit;
  */
 public class SpellPeriodicDamageEvent extends SpellDamageEvent implements SpellPeriodic {
 
-    public SpellPeriodicDamageEvent(Unit source, Unit destination, SpellInformation spell, int amount, int overkill,
-            SpellSchool spellSchool, int resisted, int blocked, int absorbed, boolean critical,
-            boolean glancing, boolean crushing) {
-        super(source, destination, spell, amount, overkill, spellSchool, resisted, blocked, absorbed, critical,
-                glancing, crushing);
+    public SpellPeriodicDamageEvent(Unit source, Unit destination, SpellInformation spell, DamageInformation damage) {
+        super(source, destination, spell, damage);
     }
 
     @Override
@@ -26,8 +23,8 @@ public class SpellPeriodicDamageEvent extends SpellDamageEvent implements SpellP
 
     @Override
     public String toString() {
-        return "SpellPeriodicDamage [ " + source.name + " (" + spell.name + ") -> " + destination.name + " : " + amount
-                + "]";
+        return "SpellPeriodicDamage [ " + source.name + " (" + spell.name + ") -> " + destination.name + " : "
+                + damage.amount + "]";
     }
 
 }

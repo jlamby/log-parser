@@ -1,6 +1,6 @@
 package fr.lby.events.type.secondary;
 
-import fr.lby.model.SpellSchool;
+import fr.lby.model.DamageInformation;
 
 /**
  * Triggered on damage to health. Nothing Special. (overkill returns a number greater than or equal to zero)
@@ -10,22 +10,6 @@ import fr.lby.model.SpellSchool;
  */
 public interface Damage {
 
-    public int getAmount();
-
-    public int getOverkill();
-
-    public SpellSchool getSpellSchool();
-
-    public int getResisted();
-
-    public int getBlocked();
-
-    public int getAbsorbed();
-
-    public boolean isCritical();
-
-    public boolean isGlancing();
-
-    public boolean isCrushing();
+    public DamageInformation getDamage();
 
 }

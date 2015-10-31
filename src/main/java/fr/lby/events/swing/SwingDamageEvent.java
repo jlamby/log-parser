@@ -4,7 +4,7 @@ import fr.lby.enums.EventType;
 import fr.lby.events.CombatEvent;
 import fr.lby.events.type.primary.Swing;
 import fr.lby.events.type.secondary.Damage;
-import fr.lby.model.SpellSchool;
+import fr.lby.model.DamageInformation;
 import fr.lby.model.Unit;
 import lombok.Getter;
 
@@ -15,28 +15,11 @@ import lombok.Getter;
 @Getter
 public class SwingDamageEvent extends CombatEvent implements Swing, Damage {
 
-    public final int         amount;
-    public final int         overkill;
-    public final SpellSchool spellSchool;
-    public final int         resisted;
-    public final int         blocked;
-    public final int         absorbed;
-    public final boolean     critical;
-    public final boolean     glancing;
-    public final boolean     crushing;
+    public final DamageInformation damage;
 
-    public SwingDamageEvent(Unit source, Unit destination, int amount, int overkill, SpellSchool spellSchool,
-            int resisted, int blocked, int absorbed, boolean critical, boolean glancing, boolean crushing) {
+    public SwingDamageEvent(Unit source, Unit destination, DamageInformation damage) {
         super(source, destination);
-        this.amount = amount;
-        this.overkill = overkill;
-        this.spellSchool = spellSchool;
-        this.resisted = resisted;
-        this.blocked = blocked;
-        this.absorbed = absorbed;
-        this.critical = critical;
-        this.glancing = glancing;
-        this.crushing = crushing;
+        this.damage = damage;
     }
 
     @Override
@@ -46,7 +29,6 @@ public class SwingDamageEvent extends CombatEvent implements Swing, Damage {
 
     @Override
     public String toString() {
-        return "SwingDamageEvent [ " + source.name + " -> " + destination.name + " : "
-                + amount + "]";
+        return "SwingDamageEvent [ " + source.name + " -> " + destination.name + " : " + damage.amount + "]";
     }
 }
