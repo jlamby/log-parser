@@ -3,12 +3,13 @@ package fr.lby.parser;
 import fr.lby.enums.EventType;
 import fr.lby.enums.PowerType;
 import fr.lby.events.spell.SpellPeriodicEnergizeEvent;
+import fr.lby.parser.models.ParserUtils;
 
 /**
  * @author jlamby
  *
  */
-public class SpellPeriodicEnergizeEventParser extends AbstractSpellEventHandler {
+public class SpellPeriodicEnergizeEventParser extends AbstractCombatEventHandler {
 
     @Override
     protected EventType getEventType() {
@@ -20,7 +21,7 @@ public class SpellPeriodicEnergizeEventParser extends AbstractSpellEventHandler 
         return new SpellPeriodicEnergizeEvent(
                 parseSourceUnit(strings),
                 parseDestinationUnit(strings),
-                parseSpell(strings),
+                ParserUtils.parseSpell(strings),
                 parseInteger(strings, SpellPeriodicEnergizeEventMapping.AMOUNT),
                 PowerType.getByValue(parseInteger(strings, SpellPeriodicEnergizeEventMapping.POWER_TYPE)));
     }

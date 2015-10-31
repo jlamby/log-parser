@@ -3,12 +3,13 @@ package fr.lby.parser;
 import fr.lby.enums.EventType;
 import fr.lby.enums.MissType;
 import fr.lby.events.range.RangeMissedEvent;
+import fr.lby.parser.models.ParserUtils;
 
 /**
  * @author jlamby
  *
  */
-public class RangeMissedEventParser extends AbstractSpellEventHandler {
+public class RangeMissedEventParser extends AbstractCombatEventHandler {
 
     @Override
     protected EventType getEventType() {
@@ -20,7 +21,7 @@ public class RangeMissedEventParser extends AbstractSpellEventHandler {
         return new RangeMissedEvent(
                 parseSourceUnit(strings),
                 parseDestinationUnit(strings),
-                parseSpell(strings),
+                ParserUtils.parseSpell(strings),
                 MissType.valueOf(strings[RangeMissedEventMapping.MISS_TYPE]),
                 parseBoolean(strings, RangeMissedEventMapping.OFF_HAND),
                 parseBoolean(strings, RangeMissedEventMapping.MULTISTRIKE),

@@ -2,12 +2,13 @@ package fr.lby.parser;
 
 import fr.lby.enums.EventType;
 import fr.lby.events.spell.SpellCastStartEvent;
+import fr.lby.parser.models.ParserUtils;
 
 /**
  * @author jlamby
  *
  */
-public class SpellCastStartEventParser extends AbstractSpellEventHandler {
+public class SpellCastStartEventParser extends AbstractCombatEventHandler {
 
     @Override
     protected EventType getEventType() {
@@ -19,7 +20,7 @@ public class SpellCastStartEventParser extends AbstractSpellEventHandler {
         return new SpellCastStartEvent(
                 parseSourceUnit(strings),
                 parseDestinationUnit(strings),
-                parseSpell(strings));
+                ParserUtils.parseSpell(strings));
     }
 
 }

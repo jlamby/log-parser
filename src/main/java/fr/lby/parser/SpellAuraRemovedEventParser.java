@@ -2,6 +2,7 @@ package fr.lby.parser;
 
 import fr.lby.enums.EventType;
 import fr.lby.events.spell.SpellAuraRemovedEvent;
+import fr.lby.parser.models.ParserUtils;
 
 /**
  * @author jlamby
@@ -19,7 +20,7 @@ public class SpellAuraRemovedEventParser extends AbstractSpellAuraEventHandler {
         return new SpellAuraRemovedEvent(
                 parseSourceUnit(strings),
                 parseDestinationUnit(strings),
-                parseSpell(strings),
+                ParserUtils.parseSpell(strings),
                 parseAuraType(strings),
                 parseAmount(strings));
     }

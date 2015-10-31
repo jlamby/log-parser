@@ -3,7 +3,9 @@ package fr.lby.parser.models;
 import org.apache.commons.lang3.BooleanUtils;
 
 import fr.lby.model.DamageInformation;
+import fr.lby.model.SpellInformation;
 import fr.lby.parser.mappings.DamageFieldsMapping;
+import fr.lby.parser.mappings.SpellFieldsMapping;
 
 /**
  * @author jlamby
@@ -31,6 +33,24 @@ public class ParserUtils {
                 parseBoolean(strings, fieldsMapping.getCriticalIndex()),
                 parseBoolean(strings, fieldsMapping.getGlancingIndex()),
                 parseBoolean(strings, fieldsMapping.getCrushingIndex()));
+    }
+
+    /**
+     * Parse {@link SpellInformation} starting at offset 9.
+     * 
+     * @param strings
+     * @return
+     */
+    public static SpellInformation parseSpell(String[] strings) {
+        return parseSpell(strings, 9);
+    }
+
+    public static SpellInformation parseSpell(String[] strings, int spellFieldsOffset) {
+        SpellFieldsMapping fieldsMapping = new SpellFieldsMapping(spellFieldsOffset);
+        return new SpellInformation(
+                parseInteger(strings, fieldsMapping.getIdIndex()),
+                strings[fieldsMapping.getNameIndex()],
+                null);
     }
 
 }

@@ -3,12 +3,13 @@ package fr.lby.parser;
 import fr.lby.enums.EventType;
 import fr.lby.enums.MissType;
 import fr.lby.events.spell.SpellPeriodicMissedEvent;
+import fr.lby.parser.models.ParserUtils;
 
 /**
  * @author jlamby
  *
  */
-public class SpellPeriodicMissedEventParser extends AbstractSpellEventHandler {
+public class SpellPeriodicMissedEventParser extends AbstractCombatEventHandler {
 
     @Override
     protected EventType getEventType() {
@@ -28,7 +29,7 @@ public class SpellPeriodicMissedEventParser extends AbstractSpellEventHandler {
         return new SpellPeriodicMissedEvent(
                 parseSourceUnit(strings),
                 parseDestinationUnit(strings),
-                parseSpell(strings),
+                ParserUtils.parseSpell(strings),
                 MissType.valueOf(strings[SpellPeriodicMissedEventMapping.MISS_TYPE]),
                 parseBoolean(strings, SpellPeriodicMissedEventMapping.OFF_HAND),
                 parseBoolean(strings, SpellPeriodicMissedEventMapping.MULTISTRIKE),

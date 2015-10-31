@@ -2,14 +2,14 @@ package fr.lby.parser;
 
 import fr.lby.enums.EventType;
 import fr.lby.events.spell.SpellAbsorbedEvent;
-import fr.lby.model.SpellInformation;
 import fr.lby.model.Unit;
+import fr.lby.parser.models.ParserUtils;
 
 /**
  * @author jlamby
  *
  */
-public class SpellAbsorbedEventParser extends AbstractSpellEventHandler {
+public class SpellAbsorbedEventParser extends AbstractCombatEventHandler {
 
     @Override
     protected EventType getEventType() {
@@ -22,9 +22,9 @@ public class SpellAbsorbedEventParser extends AbstractSpellEventHandler {
             return new SpellAbsorbedEvent(
                     parseSourceUnit(strings),
                     parseDestinationUnit(strings),
-                    parseSpell(strings),
+                    ParserUtils.parseSpell(strings),
                     parseExtraUnit(strings),
-                    parseExtraSpell(strings),
+                    ParserUtils.parseSpell(strings, SpellAbsorbedEventMapping.EXTRA_SPELL_OFFSET),
                     parseInteger(strings, SpellAbsorbedEventMapping.AMOUNT));
         }
         return null;
@@ -38,21 +38,12 @@ public class SpellAbsorbedEventParser extends AbstractSpellEventHandler {
                 strings[SpellAbsorbedEventMapping.EXTRA_UNIT_FLAGS_2]);
     }
 
-    SpellInformation parseExtraSpell(String[] strings) {
-        return new SpellInformation(
-                parseInteger(strings, SpellAbsorbedEventMapping.EXTRA_SPELL_ID),
-                strings[SpellAbsorbedEventMapping.EXTRA_SPELL_NAME],
-                null);
-    }
-
     protected static class SpellAbsorbedEventMapping {
         static final int EXTRA_UNIT_GUID    = 12;
         static final int EXTRA_UNIT_NAME    = 13;
         static final int EXTRA_UNIT_FLAGS   = 14;
         static final int EXTRA_UNIT_FLAGS_2 = 15;
-        static final int EXTRA_SPELL_ID     = 16;
-        static final int EXTRA_SPELL_NAME   = 17;
-        static final int EXTRA_SPELL_SCHOOL = 18;
+        static final int EXTRA_SPELL_OFFSET = 16;
         static final int AMOUNT             = 19;
     }
 }

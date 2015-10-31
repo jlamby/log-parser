@@ -6,7 +6,7 @@ import fr.lby.enums.AuraType;
  * @author jlamby
  *
  */
-public abstract class AbstractSpellAuraEventHandler extends AbstractSpellEventHandler {
+public abstract class AbstractSpellAuraEventHandler extends AbstractCombatEventHandler {
 
     AuraType parseAuraType(String[] strings) {
         return AuraType.valueOf(strings[AbstractSpellAuraEventMapping.AURA_TYPE]);
