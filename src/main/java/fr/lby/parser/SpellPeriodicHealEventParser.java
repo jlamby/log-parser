@@ -1,15 +1,14 @@
 package fr.lby.parser;
 
 import fr.lby.enums.EventType;
+import fr.lby.events.spell.SpellHealEvent;
 import fr.lby.events.spell.SpellPeriodicHealEvent;
-import fr.lby.events.type.Event;
-import fr.lby.parser.models.ParserUtils;
 
 /**
  * @author jlamby
  *
  */
-public class SpellPeriodicHealEventParser extends AbstractHandler {
+public class SpellPeriodicHealEventParser extends SpellHealEventParser {
 
     @Override
     protected EventType getEventType() {
@@ -17,15 +16,17 @@ public class SpellPeriodicHealEventParser extends AbstractHandler {
     }
 
     @Override
-    protected Event parse(String[] strings) {
+    protected SpellPeriodicHealEvent parse(String[] strings) {
+        SpellHealEvent event = super.parse(strings);
+
         return new SpellPeriodicHealEvent(
-                ParserUtils.parseSourceUnit(strings),
-                ParserUtils.parseDestinationUnit(strings),
-                ParserUtils.parseSpell(strings),
-                ParserUtils.parseInteger(strings, SpellPeriodicHealEventMapping.AMOUNT),
-                ParserUtils.parseInteger(strings, SpellPeriodicHealEventMapping.OVERHEAL),
-                ParserUtils.parseInteger(strings, SpellPeriodicHealEventMapping.ABSORBED),
-                ParserUtils.parseBoolean(strings, SpellPeriodicHealEventMapping.CRITICAL));
+                event.source,
+                event.destination,
+                event.spell,
+                event.amount,
+                event.overheal,
+                event.absorbed,
+                event.critical);
     }
 
     protected static class SpellPeriodicHealEventMapping {
