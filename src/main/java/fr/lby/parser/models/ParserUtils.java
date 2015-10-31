@@ -2,6 +2,7 @@ package fr.lby.parser.models;
 
 import org.apache.commons.lang3.BooleanUtils;
 
+import fr.lby.enums.AuraType;
 import fr.lby.model.DamageInformation;
 import fr.lby.model.SpellInformation;
 import fr.lby.parser.mappings.DamageFieldsMapping;
@@ -36,13 +37,13 @@ public class ParserUtils {
     }
 
     /**
-     * Parse {@link SpellInformation} starting at offset 9.
-     * 
+     * Parse {@link SpellInformation} starting at offset {@link #DEFAULT_SPELL_OFFSET}
+     *
      * @param strings
      * @return
      */
     public static SpellInformation parseSpell(String[] strings) {
-        return parseSpell(strings, 9);
+        return parseSpell(strings, DEFAULT_SPELL_OFFSET);
     }
 
     public static SpellInformation parseSpell(String[] strings, int spellFieldsOffset) {
@@ -53,4 +54,40 @@ public class ParserUtils {
                 null);
     }
 
+    /**
+     * Parse {@link AuraType} starting at offset {@link #DEFAULT_SPELL_AURA_TYPE_OFFSET}
+     *
+     * @param strings
+     * @return
+     */
+    public static AuraType parseAuraType(String[] strings) {
+        return parseAuraType(strings, DEFAULT_SPELL_AURA_TYPE_OFFSET);
+    }
+
+    public static AuraType parseAuraType(String[] strings, int auraTypeOffset) {
+        return AuraType.valueOf(strings[auraTypeOffset]);
+    }
+
+    /**
+     * Returns an integer at {@link #DEFAULT_SPELL_AURA_AMOUNT_OFFSET}. Returns 0 when
+     * {@link #DEFAULT_SPELL_AURA_AMOUNT_OFFSET} is out of bounds
+     *
+     * @param strings
+     * @return
+     */
+    public static int parseAmount(String[] strings) {
+        return parseAmount(strings, DEFAULT_SPELL_AURA_AMOUNT_OFFSET);
+    }
+
+    public static int parseAmount(String[] strings, int auraAmountOffset) {
+        if (strings.length > auraAmountOffset) {
+            return parseInteger(strings, auraAmountOffset);
+        }
+
+        return 0;
+    }
+
+    private static final int DEFAULT_SPELL_OFFSET             = 9;
+    private static final int DEFAULT_SPELL_AURA_TYPE_OFFSET   = 12;
+    private static final int DEFAULT_SPELL_AURA_AMOUNT_OFFSET = 13;
 }

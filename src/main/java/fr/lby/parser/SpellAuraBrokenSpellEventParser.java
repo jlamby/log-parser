@@ -1,6 +1,5 @@
 package fr.lby.parser;
 
-import fr.lby.enums.AuraType;
 import fr.lby.enums.EventType;
 import fr.lby.events.spell.SpellAuraBrokenSpellEvent;
 import fr.lby.parser.models.ParserUtils;
@@ -9,7 +8,7 @@ import fr.lby.parser.models.ParserUtils;
  * @author jlamby
  *
  */
-public class SpellAuraBrokenSpellEventParser extends AbstractSpellAuraEventHandler {
+public class SpellAuraBrokenSpellEventParser extends AbstractCombatEventHandler {
 
     @Override
     protected EventType getEventType() {
@@ -23,17 +22,12 @@ public class SpellAuraBrokenSpellEventParser extends AbstractSpellAuraEventHandl
                 parseDestinationUnit(strings),
                 ParserUtils.parseSpell(strings),
                 ParserUtils.parseSpell(strings, SpellAuraBrokenSpellMapping.EXTRA_SPELL_OFFSET),
-                parseAuraType(strings));
-    }
-
-    @Override
-    AuraType parseAuraType(String[] strings) {
-        return AuraType.valueOf(strings[SpellAuraBrokenSpellMapping.AURA_TYPE]);
+                ParserUtils.parseAuraType(strings, SpellAuraBrokenSpellMapping.AURA_TYPE_OFFSET));
     }
 
     protected static class SpellAuraBrokenSpellMapping {
         static final int EXTRA_SPELL_OFFSET = 12;
-        static final int AURA_TYPE          = 15;
+        static final int AURA_TYPE_OFFSET   = 15;
     }
 
 }
