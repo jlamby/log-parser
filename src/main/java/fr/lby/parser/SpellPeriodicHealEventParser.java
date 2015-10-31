@@ -9,7 +9,7 @@ import fr.lby.parser.models.ParserUtils;
  * @author jlamby
  *
  */
-public class SpellPeriodicHealEventParser extends AbstractCombatEventHandler {
+public class SpellPeriodicHealEventParser extends AbstractHandler {
 
     @Override
     protected EventType getEventType() {
@@ -19,13 +19,13 @@ public class SpellPeriodicHealEventParser extends AbstractCombatEventHandler {
     @Override
     protected Event parse(String[] strings) {
         return new SpellPeriodicHealEvent(
-                parseSourceUnit(strings),
-                parseDestinationUnit(strings),
+                ParserUtils.parseSourceUnit(strings),
+                ParserUtils.parseDestinationUnit(strings),
                 ParserUtils.parseSpell(strings),
-                parseInteger(strings, SpellPeriodicHealEventMapping.AMOUNT),
-                parseInteger(strings, SpellPeriodicHealEventMapping.OVERHEAL),
-                parseInteger(strings, SpellPeriodicHealEventMapping.ABSORBED),
-                parseBoolean(strings, SpellPeriodicHealEventMapping.CRITICAL));
+                ParserUtils.parseInteger(strings, SpellPeriodicHealEventMapping.AMOUNT),
+                ParserUtils.parseInteger(strings, SpellPeriodicHealEventMapping.OVERHEAL),
+                ParserUtils.parseInteger(strings, SpellPeriodicHealEventMapping.ABSORBED),
+                ParserUtils.parseBoolean(strings, SpellPeriodicHealEventMapping.CRITICAL));
     }
 
     protected static class SpellPeriodicHealEventMapping {

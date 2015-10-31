@@ -9,7 +9,7 @@ import fr.lby.parser.models.ParserUtils;
  * @author jlamby
  *
  */
-public class RangeMissedEventParser extends AbstractCombatEventHandler {
+public class RangeMissedEventParser extends AbstractHandler {
 
     @Override
     protected EventType getEventType() {
@@ -19,21 +19,13 @@ public class RangeMissedEventParser extends AbstractCombatEventHandler {
     @Override
     protected RangeMissedEvent parse(String[] strings) {
         return new RangeMissedEvent(
-                parseSourceUnit(strings),
-                parseDestinationUnit(strings),
+                ParserUtils.parseSourceUnit(strings),
+                ParserUtils.parseDestinationUnit(strings),
                 ParserUtils.parseSpell(strings),
                 MissType.valueOf(strings[RangeMissedEventMapping.MISS_TYPE]),
-                parseBoolean(strings, RangeMissedEventMapping.OFF_HAND),
-                parseBoolean(strings, RangeMissedEventMapping.MULTISTRIKE),
-                parseAmount(strings));
-    }
-
-    int parseAmount(String[] strings) {
-        if (strings.length > RangeMissedEventMapping.AMOUNT_MISSED) {
-            return parseInteger(strings, RangeMissedEventMapping.AMOUNT_MISSED);
-        }
-
-        return 0;
+                ParserUtils.parseBoolean(strings, RangeMissedEventMapping.OFF_HAND),
+                ParserUtils.parseBoolean(strings, RangeMissedEventMapping.MULTISTRIKE),
+                ParserUtils.parseAmount(strings, RangeMissedEventMapping.AMOUNT_MISSED));
     }
 
     protected class RangeMissedEventMapping {

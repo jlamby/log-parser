@@ -9,31 +9,23 @@ import fr.lby.parser.models.ParserUtils;
  * @author jlamby
  *
  */
-public class SpellPeriodicMissedEventParser extends AbstractCombatEventHandler {
+public class SpellPeriodicMissedEventParser extends AbstractHandler {
 
     @Override
     protected EventType getEventType() {
         return EventType.SPELL_PERIODIC_MISSED;
     }
 
-    int parseAmount(String[] strings) {
-        if (strings.length > SpellPeriodicMissedEventMapping.AMOUNT_MISSED) {
-            return parseInteger(strings, SpellPeriodicMissedEventMapping.AMOUNT_MISSED);
-        }
-
-        return 0;
-    }
-
     @Override
     protected SpellPeriodicMissedEvent parse(String[] strings) {
         return new SpellPeriodicMissedEvent(
-                parseSourceUnit(strings),
-                parseDestinationUnit(strings),
+                ParserUtils.parseSourceUnit(strings),
+                ParserUtils.parseDestinationUnit(strings),
                 ParserUtils.parseSpell(strings),
                 MissType.valueOf(strings[SpellPeriodicMissedEventMapping.MISS_TYPE]),
-                parseBoolean(strings, SpellPeriodicMissedEventMapping.OFF_HAND),
-                parseBoolean(strings, SpellPeriodicMissedEventMapping.MULTISTRIKE),
-                parseAmount(strings));
+                ParserUtils.parseBoolean(strings, SpellPeriodicMissedEventMapping.OFF_HAND),
+                ParserUtils.parseBoolean(strings, SpellPeriodicMissedEventMapping.MULTISTRIKE),
+                ParserUtils.parseAmount(strings, SpellPeriodicMissedEventMapping.AMOUNT_MISSED));
     }
 
     protected static class SpellPeriodicMissedEventMapping {

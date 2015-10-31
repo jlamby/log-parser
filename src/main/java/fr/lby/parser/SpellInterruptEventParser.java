@@ -8,7 +8,7 @@ import fr.lby.parser.models.ParserUtils;
  * @author jlamby
  *
  */
-public class SpellInterruptEventParser extends AbstractCombatEventHandler {
+public class SpellInterruptEventParser extends AbstractHandler {
 
     @Override
     protected EventType getEventType() {
@@ -18,8 +18,8 @@ public class SpellInterruptEventParser extends AbstractCombatEventHandler {
     @Override
     protected SpellInterruptEvent parse(String[] strings) {
         return new SpellInterruptEvent(
-                parseSourceUnit(strings),
-                parseDestinationUnit(strings),
+                ParserUtils.parseSourceUnit(strings),
+                ParserUtils.parseDestinationUnit(strings),
                 ParserUtils.parseSpell(strings),
                 ParserUtils.parseSpell(strings, EXTRA_SPELL_OFFSET));
     }

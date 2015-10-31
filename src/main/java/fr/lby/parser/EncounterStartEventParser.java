@@ -3,6 +3,7 @@ package fr.lby.parser;
 import fr.lby.enums.DifficultyType;
 import fr.lby.enums.EventType;
 import fr.lby.events.encounter.EncounterStartEvent;
+import fr.lby.parser.models.ParserUtils;
 
 /**
  * @author jlamby
@@ -18,10 +19,10 @@ public class EncounterStartEventParser extends AbstractHandler {
     @Override
     protected EncounterStartEvent parse(String[] strings) {
         return new EncounterStartEvent(
-                parseInteger(strings, EncounterStartEventMapping.ID),
+                ParserUtils.parseInteger(strings, EncounterStartEventMapping.ID),
                 strings[EncounterStartEventMapping.NAME],
-                DifficultyType.valueOf(parseInteger(strings, EncounterStartEventMapping.DIFFICULTY_TYPE)),
-                parseInteger(strings, EncounterStartEventMapping.RAID_SIZE));
+                DifficultyType.valueOf(ParserUtils.parseInteger(strings, EncounterStartEventMapping.DIFFICULTY_TYPE)),
+                ParserUtils.parseInteger(strings, EncounterStartEventMapping.RAID_SIZE));
 
     }
 

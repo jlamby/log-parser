@@ -8,7 +8,7 @@ import fr.lby.parser.models.ParserUtils;
  * @author jlamby
  *
  */
-public class RangeDamageEventParser extends AbstractCombatEventHandler {
+public class RangeDamageEventParser extends AbstractHandler {
 
     @Override
     protected EventType getEventType() {
@@ -18,8 +18,8 @@ public class RangeDamageEventParser extends AbstractCombatEventHandler {
     @Override
     protected RangeDamageEvent parse(String[] strings) {
         return new RangeDamageEvent(
-                parseSourceUnit(strings),
-                parseDestinationUnit(strings),
+                ParserUtils.parseSourceUnit(strings),
+                ParserUtils.parseDestinationUnit(strings),
                 ParserUtils.parseSpell(strings),
                 ParserUtils.parseDamage(strings, DAMAGE_FIELDS_OFFSET));
     }

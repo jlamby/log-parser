@@ -5,8 +5,10 @@ import org.apache.commons.lang3.BooleanUtils;
 import fr.lby.enums.AuraType;
 import fr.lby.model.DamageInformation;
 import fr.lby.model.SpellInformation;
+import fr.lby.model.Unit;
 import fr.lby.parser.mappings.DamageFieldsMapping;
 import fr.lby.parser.mappings.SpellFieldsMapping;
+import fr.lby.parser.mappings.UnitFieldsMapping;
 
 /**
  * @author jlamby
@@ -54,6 +56,24 @@ public class ParserUtils {
                 null);
     }
 
+    public static Unit parseSourceUnit(String[] strings) {
+        return parseUnit(strings, DEFAULT_SOURCE_UNIT_OFFSET);
+    }
+
+    public static Unit parseDestinationUnit(String[] strings) {
+        return parseUnit(strings, DEFAULT_DESTINATION_UNIT_OFFSET);
+    }
+
+    public static Unit parseUnit(String[] strings, int unitFieldsOffset) {
+        UnitFieldsMapping fieldsMapping = new UnitFieldsMapping(unitFieldsOffset);
+
+        return new Unit(
+                strings[fieldsMapping.getGUIDIndex()],
+                strings[fieldsMapping.getNameIndex()],
+                strings[fieldsMapping.getFlagsIndex()],
+                strings[fieldsMapping.getFlags2Index()]);
+    }
+
     /**
      * Parse {@link AuraType} starting at offset {@link #DEFAULT_SPELL_AURA_TYPE_OFFSET}
      *
@@ -75,18 +95,20 @@ public class ParserUtils {
      * @param strings
      * @return
      */
-    public static int parseAmount(String[] strings) {
+    public static int parseAuraAmount(String[] strings) {
         return parseAmount(strings, DEFAULT_SPELL_AURA_AMOUNT_OFFSET);
     }
 
-    public static int parseAmount(String[] strings, int auraAmountOffset) {
-        if (strings.length > auraAmountOffset) {
-            return parseInteger(strings, auraAmountOffset);
+    public static int parseAmount(String[] strings, int amountOffset) {
+        if (strings.length > amountOffset) {
+            return parseInteger(strings, amountOffset);
         }
 
         return 0;
     }
 
+    private static final int DEFAULT_SOURCE_UNIT_OFFSET       = 1;
+    private static final int DEFAULT_DESTINATION_UNIT_OFFSET  = 5;
     private static final int DEFAULT_SPELL_OFFSET             = 9;
     private static final int DEFAULT_SPELL_AURA_TYPE_OFFSET   = 12;
     private static final int DEFAULT_SPELL_AURA_AMOUNT_OFFSET = 13;

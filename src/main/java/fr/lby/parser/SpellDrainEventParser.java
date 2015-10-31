@@ -9,7 +9,7 @@ import fr.lby.parser.models.ParserUtils;
  * @author jlamby
  *
  */
-public class SpellDrainEventParser extends AbstractCombatEventHandler {
+public class SpellDrainEventParser extends AbstractHandler {
 
     @Override
     protected EventType getEventType() {
@@ -19,12 +19,12 @@ public class SpellDrainEventParser extends AbstractCombatEventHandler {
     @Override
     protected SpellDrainEvent parse(String[] strings) {
         return new SpellDrainEvent(
-                parseSourceUnit(strings),
-                parseDestinationUnit(strings),
+                ParserUtils.parseSourceUnit(strings),
+                ParserUtils.parseDestinationUnit(strings),
                 ParserUtils.parseSpell(strings),
-                parseInteger(strings, SpellDrainMapping.AMOUNT),
-                PowerType.getByValue(parseInteger(strings, SpellDrainMapping.POWER_TYPE)),
-                parseInteger(strings, SpellDrainMapping.EXTRA_AMOUNT));
+                ParserUtils.parseInteger(strings, SpellDrainMapping.AMOUNT),
+                PowerType.getByValue(ParserUtils.parseInteger(strings, SpellDrainMapping.POWER_TYPE)),
+                ParserUtils.parseInteger(strings, SpellDrainMapping.EXTRA_AMOUNT));
     }
 
     protected static class SpellDrainMapping {

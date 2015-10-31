@@ -8,7 +8,7 @@ import fr.lby.parser.models.ParserUtils;
  * @author jlamby
  *
  */
-public class SwingDamageEventParser extends AbstractCombatEventHandler {
+public class SwingDamageEventParser extends AbstractHandler {
 
     @Override
     protected EventType getEventType() {
@@ -18,8 +18,8 @@ public class SwingDamageEventParser extends AbstractCombatEventHandler {
     @Override
     protected SwingDamageEvent parse(String[] strings) {
         return new SwingDamageEvent(
-                parseSourceUnit(strings),
-                parseDestinationUnit(strings),
+                ParserUtils.parseSourceUnit(strings),
+                ParserUtils.parseDestinationUnit(strings),
                 ParserUtils.parseDamage(strings, DAMAGE_FIELDS_OFFSET));
     }
 

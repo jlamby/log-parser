@@ -3,12 +3,13 @@ package fr.lby.parser;
 import fr.lby.enums.EventType;
 import fr.lby.enums.MissType;
 import fr.lby.events.swing.SwingMissedEvent;
+import fr.lby.parser.models.ParserUtils;
 
 /**
  * @author jlamby
  *
  */
-public class SwingMissedEventParser extends AbstractCombatEventHandler {
+public class SwingMissedEventParser extends AbstractHandler {
 
     @Override
     protected EventType getEventType() {
@@ -18,20 +19,12 @@ public class SwingMissedEventParser extends AbstractCombatEventHandler {
     @Override
     protected SwingMissedEvent parse(String[] strings) {
         return new SwingMissedEvent(
-                parseSourceUnit(strings),
-                parseDestinationUnit(strings),
+                ParserUtils.parseSourceUnit(strings),
+                ParserUtils.parseDestinationUnit(strings),
                 MissType.valueOf(strings[SwingMissedEventMapping.MISS_TYPE]),
-                parseBoolean(strings, SwingMissedEventMapping.OFF_HAND),
-                parseBoolean(strings, SwingMissedEventMapping.MULTISTRIKE),
-                parseAmount(strings));
-    }
-
-    int parseAmount(String[] strings) {
-        if (strings.length > SwingMissedEventMapping.AMOUNT_MISSED) {
-            return parseInteger(strings, SwingMissedEventMapping.AMOUNT_MISSED);
-        }
-
-        return 0;
+                ParserUtils.parseBoolean(strings, SwingMissedEventMapping.OFF_HAND),
+                ParserUtils.parseBoolean(strings, SwingMissedEventMapping.MULTISTRIKE),
+                ParserUtils.parseAmount(strings, SwingMissedEventMapping.AMOUNT_MISSED));
     }
 
     protected class SwingMissedEventMapping {

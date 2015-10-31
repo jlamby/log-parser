@@ -9,7 +9,7 @@ import fr.lby.parser.models.ParserUtils;
  * @author jlamby
  *
  */
-public class EnvironmentalDamageEventParser extends AbstractCombatEventHandler {
+public class EnvironmentalDamageEventParser extends AbstractHandler {
 
     @Override
     protected EventType getEventType() {
@@ -19,8 +19,8 @@ public class EnvironmentalDamageEventParser extends AbstractCombatEventHandler {
     @Override
     protected EnvironmentalDamageEvent parse(String[] strings) {
         return new EnvironmentalDamageEvent(
-                parseSourceUnit(strings),
-                parseDestinationUnit(strings),
+                ParserUtils.parseSourceUnit(strings),
+                ParserUtils.parseDestinationUnit(strings),
                 EnvironmentalType.getByValue(strings[EnvironmentalDamageEventMapping.ENVIRONMENTAL_TYPE]),
                 ParserUtils.parseDamage(strings, EnvironmentalDamageEventMapping.DAMAGE_FIELDS_OFFSET));
     }

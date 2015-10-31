@@ -36,10 +36,12 @@ public abstract class AbstractHandler {
 
     protected abstract Event parse(String[] strings);
 
+    @Deprecated
     int parseInteger(String[] strings, int index) {
         return Integer.valueOf(strings[index]);
     }
 
+    @Deprecated
     boolean parseBoolean(String[] strings, int index) {
         return BooleanUtils.toBoolean(strings[index], "1", "nil");
     }

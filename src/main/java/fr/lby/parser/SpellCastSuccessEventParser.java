@@ -8,7 +8,7 @@ import fr.lby.parser.models.ParserUtils;
  * @author jlamby
  *
  */
-public class SpellCastSuccessEventParser extends AbstractCombatEventHandler {
+public class SpellCastSuccessEventParser extends AbstractHandler {
 
     @Override
     protected EventType getEventType() {
@@ -18,8 +18,8 @@ public class SpellCastSuccessEventParser extends AbstractCombatEventHandler {
     @Override
     protected SpellCastSuccessEvent parse(String[] strings) {
         return new SpellCastSuccessEvent(
-                parseSourceUnit(strings),
-                parseDestinationUnit(strings),
+                ParserUtils.parseSourceUnit(strings),
+                ParserUtils.parseDestinationUnit(strings),
                 ParserUtils.parseSpell(strings));
     }
 
