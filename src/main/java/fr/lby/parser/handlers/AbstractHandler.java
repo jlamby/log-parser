@@ -1,0 +1,49 @@
+package fr.lby.parser.handlers;
+
+import org.apache.commons.lang3.BooleanUtils;
+
+import fr.lby.enums.EventType;
+import fr.lby.events.type.Event;
+
+/**
+ * @author jlamby
+ *
+ */
+public abstract class AbstractHandler {
+
+    protected AbstractHandler nextParser;
+    protected EventType       eventType;
+
+    public AbstractHandler nextParser(AbstractHandler nextParser) {
+        this.nextParser = nextParser;
+        return nextParser;
+    }
+
+    public Event parse(EventType type, String[] strings) {
+
+        if (type == getEventType()) {
+            return parse(strings);
+        }
+
+        if (nextParser != null) {
+            return nextParser.parse(type, strings);
+        }
+
+        return null;
+    }
+
+    protected abstract EventType getEventType();
+
+    protected abstract Event parse(String[] strings);
+
+    @Deprecated
+    int parseInteger(String[] strings, int index) {
+        return Integer.valueOf(strings[index]);
+    }
+
+    @Deprecated
+    boolean parseBoolean(String[] strings, int index) {
+        return BooleanUtils.toBoolean(strings[index], "1", "nil");
+    }
+
+}
