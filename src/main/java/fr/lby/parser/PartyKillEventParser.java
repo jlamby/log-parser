@@ -2,7 +2,6 @@ package fr.lby.parser;
 
 import fr.lby.enums.EventType;
 import fr.lby.events.PartyKillEvent;
-import fr.lby.parser.models.ParserUtils;
 
 /**
  * @author jlamby

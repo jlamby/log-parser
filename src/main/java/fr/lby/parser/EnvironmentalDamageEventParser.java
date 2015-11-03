@@ -3,7 +3,6 @@ package fr.lby.parser;
 import fr.lby.enums.EnvironmentalType;
 import fr.lby.enums.EventType;
 import fr.lby.events.EnvironmentalDamageEvent;
-import fr.lby.parser.models.ParserUtils;
 
 /**
  * @author jlamby

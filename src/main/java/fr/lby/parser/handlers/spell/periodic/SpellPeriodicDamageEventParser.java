@@ -1,26 +1,26 @@
-package fr.lby.parser;
+package fr.lby.parser.handlers.spell.periodic;
 
 import fr.lby.enums.EventType;
-import fr.lby.events.damage.DamageSplitEvent;
 import fr.lby.events.spell.SpellDamageEvent;
+import fr.lby.events.spell.SpellPeriodicDamageEvent;
 import fr.lby.parser.handlers.spell.SpellDamageEventParser;
 
 /**
  * @author jlamby
  *
  */
-public class DamageSplitEventParser extends SpellDamageEventParser {
+public class SpellPeriodicDamageEventParser extends SpellDamageEventParser {
 
     @Override
     protected EventType getEventType() {
-        return EventType.DAMAGE_SPLIT;
+        return EventType.SPELL_PERIODIC_DAMAGE;
     }
 
     @Override
-    protected DamageSplitEvent parse(String[] strings) {
+    protected SpellPeriodicDamageEvent parse(String[] strings) {
         SpellDamageEvent event = super.parse(strings);
 
-        return new DamageSplitEvent(
+        return new SpellPeriodicDamageEvent(
                 event.source,
                 event.destination,
                 event.spell,
